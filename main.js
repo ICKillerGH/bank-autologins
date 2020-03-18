@@ -28,6 +28,8 @@ function createWindow() {
         protocol: 'file',
         pathname: resolve(__dirname, 'index.html')
     }));
+
+    // win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow);
@@ -39,13 +41,13 @@ ipcMain.on('getCredentials', (event, args) => {
 });
 
 ipcMain.on('loadUrl', (event, bankCredential) => {
-    event.sender.once('did-finish-load', (e) => {
-        event.sender.send('login', bankCredential);
-    });
+    event.sender.once('did-finish-load', e => event.sender.send('login', bankCredential));
+
+    event.sender.once('dom-ready', e => event.sender.send('showLoader', null));
+
+    event.sender.loadURL(bankCredential.url);
 
     if (win !== null) {
         win.maximize();
     }
-
-    event.sender.loadURL(bankCredential.url);
 });
