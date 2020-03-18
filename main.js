@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { resolve } = require('path');
 const { readFileSync } = require('fs');
+const { format } = require('url');
 
 const filePath = resolve(__dirname, 'assets', 'bank_credentials.json');
 
@@ -8,10 +9,12 @@ const fileContents = readFileSync(filePath, 'utf8');
 
 const credentials = JSON.parse(fileContents);
 
+let win = null;
+
 function createWindow() {
-    let win = new BrowserWindow({
-        width: 800,
-        height: 600,
+    win = new BrowserWindow({
+        width: 500,
+        height: 150,
         webPreferences: {
             contextIsolation: true,
             enableRemoteModule: false,
@@ -19,11 +22,12 @@ function createWindow() {
         }
     });
 
-    win.loadURL(`file://${__dirname}/index.html`);
+    win.setMenu(null);
     
-    win.webContents.openDevTools();
-
-    win.maximize();
+    win.loadURL(format({
+        protocol: 'file',
+        pathname: resolve(__dirname, 'index.html')
+    }));
 }
 
 app.whenReady().then(createWindow);
@@ -38,6 +42,10 @@ ipcMain.on('loadUrl', (event, bankCredential) => {
     event.sender.once('did-finish-load', (e) => {
         event.sender.send('login', bankCredential);
     });
+
+    if (win !== null) {
+        win.maximize();
+    }
 
     event.sender.loadURL(bankCredential.url);
 });
