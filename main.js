@@ -35,7 +35,7 @@ ipcMain.on('getCredentials', (event, args) => {
 });
 
 ipcMain.on('loadUrl', (event, bankCredential) => {
-    event.sender.once('dom-ready', (e) => {
+    event.sender.once('did-finish-load', (e) => {
         event.sender.send('login', bankCredential);
     });
 

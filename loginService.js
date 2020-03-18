@@ -4,6 +4,7 @@ function logIntoBancaribe(credentials) {
     const submitBtn = document.getElementById('botonA');
 
     usernameInput.value = credentials.username;
+
     passwordInput.value = credentials.password;
 
     submitBtn.click();
@@ -12,9 +13,17 @@ function logIntoBancaribe(credentials) {
 function logIntoProvincial(credentials) {
     const usernameInput = document.getElementById('NUMDOCI');
     const passwordInput = document.getElementById('claveIngreso');
+    const siguienteBtn = document.getElementById('BotonEnviar');
     const submitBtn = document.getElementById('BotonIngresar');
     
-    usernameInput.value = credentials.username;    
+    usernameInput.focus();
+
+    usernameInput.value = credentials.username;
+
+    siguienteBtn.click();
+
+    passwordInput.focus();
+    
     passwordInput.value = credentials.password;
 
     submitBtn.click();

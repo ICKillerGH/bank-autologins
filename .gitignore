@@ -1,5 +1,6 @@
 #directories
 node_modules/
+dist/
 
 #files
 assets/bank_credentials.json
