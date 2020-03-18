@@ -51,11 +51,9 @@ ipcRenderer.on('showLoader', () => {
         color: white;
         font-size: 45px;
         font-weight: bold;
-    `)
+    `);
 
-    loaderDiv.innerHTML = `
-        <p>Cargando...</p>
-    `
+    loaderDiv.innerHTML = '<p>Cargando...</p>';
 
     document.body.appendChild(loaderDiv);
 });

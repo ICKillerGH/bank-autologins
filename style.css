@@ -1,33 +1,31 @@
 body {
-            margin: 0;
-        }
-        
-        #bankAutologins {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+    margin: 0;
+}
 
-        .btn {
-            border: none;
-            display: inline-block;
-            padding: 15px 20px;
-            background: #538eea;
-            color: white;
-            font-size: 18px;
-            text-transform: uppercase;
-            border: 1px solid #4d84de;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+#bankAutologins {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        .btn:not(:last-child) {
-            margin-right: 15px;
-        }
+.btn {
+    border: none;
+    display: inline-block;
+    padding: 15px 20px;
+    background: #538eea;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: 1px solid #4d84de;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        .btn:hover {
-            box-shadow: 0 -3px 0 rgba(0, 0, 0, .2) inset;
-        }
+.btn:not(:last-child) {
+    margin-right: 15px;
+}
 
-        .
+.btn:hover {
+    box-shadow: 0 -3px 0 rgba(0, 0, 0, .2) inset;
+}
